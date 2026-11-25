@@ -34,16 +34,16 @@ def page(name, title, body):
     doc = f"""<!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><link rel="stylesheet" href="style.css"></head>
-<body><main><header><a class="brand" href="./">OtoKünye</a><nav><a href="./">Destek</a><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım koşulları</a></nav></header>
+<body><main><header><a class="brand" href="./">PaketFarkı</a><nav><a href="./">Destek</a><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım koşulları</a></nav></header>
 {body}
-<footer>OtoKünye · İletişim: <a href="mailto:otokunye.app@gmail.com">otokunye.app@gmail.com</a></footer></main></body></html>
+<footer>PaketFarkı · İletişim: <a href="mailto:otokunye.app@gmail.com">otokunye.app@gmail.com</a></footer></main></body></html>
 """
     (OUT / name).write_text(doc, encoding='utf-8')
 
 (OUT / 'style.css').write_text(CSS, encoding='utf-8')
 src = SRC.read_text(encoding='utf-8').split('---', 2)[2]
-page('privacy.html', 'Gizlilik ve KVKK aydınlatma metni – OtoKünye',
+page('privacy.html', 'Gizlilik ve KVKK aydınlatma metni – PaketFarkı',
      '<h1>Gizlilik ve KVKK aydınlatma metni</h1>\n' + md(src))
-page('index.html', 'OtoKünye – Sıfır araç kıyasla', md(Path(sys.argv[1]).read_text(encoding='utf-8')).replace('<h2>', '<h2>', 1).replace('<p>', '<p>', 1).join(['<h1>OtoKünye: Sıfır Araç Kıyasla</h1>\n', '']))
-page('terms.html', 'Kullanım koşulları – OtoKünye', '<h1>Kullanım koşulları</h1>\n' + md(Path(sys.argv[2]).read_text(encoding='utf-8')))
+page('index.html', 'PaketFarkı – Sıfır araç kıyasla', md(Path(sys.argv[1]).read_text(encoding='utf-8')).replace('<h2>', '<h2>', 1).replace('<p>', '<p>', 1).join(['<h1>PaketFarkı: Sıfır Araç Kıyasla</h1>\n', '']))
+page('terms.html', 'Kullanım koşulları – PaketFarkı', '<h1>Kullanım koşulları</h1>\n' + md(Path(sys.argv[2]).read_text(encoding='utf-8')))
 print(sorted(p.name for p in OUT.iterdir()))
